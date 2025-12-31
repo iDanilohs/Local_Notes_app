@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOCAL NOTES APP</title>
-    <script src="script.js"></script>
 </head>
 <body>
-    <br>
-        <input type="text" placeholder="write somehting" name="something" id="something">
-        <button type="button" onclick="getValue()">Save</button>
+    <form id="note-form">
+        <input type="text" placeholder="write somehting" id="note-input">
+        <button type="submit" >Save</button>
     </form>
+    <ul id="notes-list"></ul>
+    <script src="script.js"></script>
 </body>
 </html>
