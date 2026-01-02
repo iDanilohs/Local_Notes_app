@@ -9,11 +9,30 @@ console.log('noteStorage: ' + notesStorage);
 // Function to display the notes
 function displayNotes() {
     notesList.innerHTML = ''; //clean the page
-    notesStorage.forEach(noteText => {
+    notesStorage.forEach((noteText, index) => {
         const li = document.createElement('li');
         li.textContent = noteText;
-        notesList.appendChild(li);
+
+        // create delete button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'X';
+        deleteBtn.classList.add('delete-btn');
+
+        // Delete logic
+        deleteBtn.addEventListener('click', ()=> {
+            deleteNote(index);
+        })
+        
+        li.appendChild(deleteBtn); // delete button
+        notesList.appendChild(li); // text
     })
+}
+
+// Fuction to delete notes
+function deleteNote(index) {
+    notesStorage.splice(index, 1); // take 1 item form the index
+    localStorage.setItem('notes', JSON.stringify(notesStorage));
+    displayNotes();
 }
 
 // Function to add notes
